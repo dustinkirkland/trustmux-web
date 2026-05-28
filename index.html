@@ -452,7 +452,7 @@
   ┌─────────────────────────┐               ┌────────────────┐
   │  tmux / Byobu sessions  │               │                │
   │  ┌──────────────────┐   │   Tailscale   │   Trustmux     │
-  │  │  trustmux daemon │◄──┼───WireGuard───┼── PWA / app    │
+  │  │  trustmux daemon │◄──┼───WireGuard───┼── PWA (or app) │
   │  └──────────────────┘   │   (TLS)       │                │
   │  ~/.config/trustmux/    │               │  browser or    │
   │  tokens + pairing       │               │  home screen   │
@@ -487,8 +487,8 @@
   <div class="features-grid">
     <div class="feature">
       <div class="feature-icon">📱</div>
-      <h3>Mobile-first PWA</h3>
-      <p>Add to your home screen on iOS and Android. Works like a native app — no App Store required.</p>
+      <h3>Progressive Web App (PWA)</h3>
+      <p>A PWA is a website that installs like a native app — one tap to add to your home screen on iOS or Android, no App Store, no review process, no download waiting. It launches full-screen, works offline for the UI shell, and updates silently in the background whenever you connect. Just a thin, fast wrapper around your mobile browser.</p>
     </div>
     <div class="feature">
       <div class="feature-icon">🔒</div>
@@ -584,14 +584,14 @@
   <div class="pricing-grid">
     <div class="plan featured">
       <div class="plan-badge">Free forever</div>
-      <h3>PWA</h3>
+      <h3>Progressive Web App (PWA)</h3>
       <div class="plan-price">$0</div>
-      <p class="plan-desc">Everything you need to monitor and interact with your terminal from your phone.</p>
+      <p class="plan-desc">A PWA installs in one tap — no App Store, no updates to manage. Everything you need to monitor and interact with your terminal from any device.</p>
       <ul>
         <li>Live terminal output streaming</li>
         <li>Send keystrokes &amp; commands</li>
         <li>Pairing-code authentication</li>
-        <li>Add to Home Screen (PWA)</li>
+        <li>One-tap install to home screen</li>
         <li>Unlimited panes on one machine</li>
         <li class="dim">Session / window / pane switching</li>
         <li class="dim">Native Flutter app</li>
