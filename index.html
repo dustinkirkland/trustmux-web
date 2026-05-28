@@ -446,6 +446,20 @@
 <section id="how-it-works">
   <h2>How it works</h2>
   <p class="section-sub">Three steps from install to your terminal on your phone.</p>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 2rem;margin-bottom:2.5rem;overflow-x:auto;">
+    <pre style="font-family:var(--mono);font-size:0.82rem;line-height:1.7;color:var(--muted);margin:0;"><span style="color:var(--text);">  Your workstation                           Your phone</span>
+  ┌─────────────────────────┐               ┌────────────────┐
+  │  tmux / Byobu sessions  │               │                │
+  │  ┌──────────────────┐   │   Tailscale   │   Trustmux     │
+  │  │  trustmux daemon │◄──┼───WireGuard───┼── PWA / app    │
+  │  └──────────────────┘   │   (TLS)       │                │
+  │  ~/.config/trustmux/    │               │  browser or    │
+  │  tokens + pairing       │               │  home screen   │
+  └─────────────────────────┘               └────────────────┘
+          <span style="color:var(--accent);">↑ your machine, your data, point to point — no cloud</span></pre>
+  </div>
+
   <div class="steps">
     <div class="step">
       <div class="step-num">Step 01</div>
