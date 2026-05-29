@@ -819,6 +819,21 @@
       </div>
     </details>
 
+    <details class="faq-item">
+      <summary>How does Trustmux compare to Mosh?</summary>
+      <div class="faq-body">
+        <p><a href="https://mosh.org">Mosh</a> is a roaming-aware replacement for SSH — it handles spotty mobile connections gracefully and predicts your keystrokes locally so the terminal feels snappy even on a high-latency link. It's great technology, but it's still a <em>connection</em> to a remote shell. If that connection breaks long enough, your session can diverge; and because Mosh itself provides no multiplexing, most people run Mosh <em>into</em> a tmux session on the server anyway to get persistence.</p>
+        <p>Trustmux is a different layer entirely. Rather than replacing SSH, it replaces the <em>phone client</em>. There is no SSH, no Mosh — your phone's browser attaches directly to a tmux session that is already running on your workstation, over your Tailscale WireGuard tunnel. Key differences:</p>
+        <ul style="margin:0.5rem 0 0.75rem 1.25rem; line-height:1.7;">
+          <li><strong>No extra server software.</strong> Mosh requires <code>mosh-server</code> on every remote machine and open UDP ports (60000–61000). Trustmux runs only on your workstation; nothing extra is needed on any server.</li>
+          <li><strong>Browser, not a terminal app.</strong> Trustmux renders in a PWA, so pinch-to-zoom, copy-paste, and your phone's accessibility features all work naturally. Mosh requires a dedicated terminal emulator app.</li>
+          <li><strong>Session persistence is built in.</strong> Both approaches benefit from tmux underneath, but Trustmux is designed around that model from the start — you're always looking at the live state of a session that never stops.</li>
+          <li><strong>Local echo vs. live output.</strong> Mosh's local prediction makes typing feel faster on laggy links. Trustmux streams real terminal output with no prediction; over a Tailscale tunnel this is typically fast enough that the difference is imperceptible.</li>
+        </ul>
+        <p>If you love Mosh for SSH access to remote servers, keep using it — Trustmux doesn't replace that workflow. What Trustmux replaces is reaching for a Mosh or SSH client on your phone just to peek at a build running on your desk.</p>
+      </div>
+    </details>
+
   </div>
 </section>
 
