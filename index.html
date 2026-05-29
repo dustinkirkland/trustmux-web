@@ -292,6 +292,7 @@
 
     .code-block .comment { color: var(--muted); }
     .code-block .dollar { color: var(--accent); user-select: none; }
+    .code-block .out { color: var(--muted); }
 
     /* ── Pricing ──────────────────────────────────────────────────────── */
     .pricing-grid {
@@ -408,9 +409,9 @@
     <img src="trustmux.svg" alt="" style="height:24px;width:24px;">trustmux
   </div>
   <ul class="nav-links">
+    <li><a href="#install">Install</a></li>
     <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#install">Install</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="https://github.com/dustinkirkland/byobu" class="nav-cta">GitHub</a></li>
   </ul>
@@ -418,7 +419,7 @@
 
 <!-- Hero -->
 <section id="hero">
-  <div class="hero-badge"><span>NEW</span> Now available on PyPI &amp; Ubuntu PPA</div>
+  <div class="hero-badge"><span>NEW</span> Now available on Ubuntu PPA, PyPI, and Homebrew</div>
   <h1>Your workstation terminal,<br><em>in your pocket.</em></h1>
   <p>
     Trustmux lets you monitor and interact with your
@@ -427,15 +428,13 @@
     from any browser — privately, over your
     <a href="https://tailscale.com">Tailscale</a> network.
     No relay server. No cloud. Point to point.
-    Your data is private and TLS encrypted.
+    Your data is always private and TLS encrypted.
   </p>
   <div class="hero-actions">
     <a href="#install" class="btn btn-primary">Get started</a>
     <a href="https://github.com/dustinkirkland/byobu" class="btn btn-secondary">View on GitHub</a>
   </div>
   <div class="hero-terminal">
-    <div><span class="prompt">$</span> <span class="cmd">pip install trustmux</span></div>
-    <div class="out">Successfully installed trustmux-7.0a7</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux-ctl start</span></div>
     <div class="out">Trustmux started.</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux-enable</span></div>
@@ -446,21 +445,107 @@
   </div>
 </section>
 
+<!-- Install -->
+<section id="install">
+  <h2>Install</h2>
+  <p class="section-sub">Pick your preferred package manager.</p>
+
+  <div class="install-tabs">
+    <button class="tab-btn active" onclick="showTab('apt')">apt / PPA</button>
+    <button class="tab-btn" onclick="showTab('pip')">pip</button>
+    <button class="tab-btn" onclick="showTab('brew')">Homebrew</button>
+  </div>
+
+  <div id="tab-apt" class="tab-panel active">
+    <div class="code-block">
+      <div class="comment"># Ubuntu 22.04 (Jammy) and later</div>
+      <div><span class="dollar">$</span> sudo add-apt-repository ppa:byobu/ppa</div>
+      <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install trustmux</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div class="out">Trustmux started.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Enable at login</div>
+      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div class="out">Trustmux enabled at login.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
+      <div class="comment"># Pair your phone</div>
+      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
+      <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
+    </div>
+  </div>
+
+  <div id="tab-pip" class="tab-panel">
+    <div class="code-block">
+      <div class="comment"># Requires Python 3.9+ and Tailscale</div>
+      <div><span class="dollar">$</span> pip install trustmux</div>
+      <div class="out">Successfully installed trustmux-7.0a7</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div class="out">Trustmux started.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Enable at login</div>
+      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div class="out">Trustmux enabled at login.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
+      <div class="comment"># Pair your phone</div>
+      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
+      <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
+    </div>
+  </div>
+
+  <div id="tab-brew" class="tab-panel">
+    <div class="code-block">
+      <div class="comment"># macOS (requires tmux and Tailscale)</div>
+      <div><span class="dollar">$</span> brew tap dustinkirkland/trustmux</div>
+      <div><span class="dollar">$</span> brew install dustinkirkland/trustmux/trustmux</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div class="out">Trustmux started.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Enable at login</div>
+      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div class="out">Trustmux enabled at login.</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
+      <div class="comment"># Pair your phone</div>
+      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
+      <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
+    </div>
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--muted); font-size:0.875rem;">
+    Requires <a href="https://tailscale.com">Tailscale</a> for secure HTTPS transport and
+    <a href="https://github.com/tmux/tmux/wiki">tmux</a> &ge; 1.5.
+    <a href="https://byobu.org">Byobu</a> is recommended but not required.
+    Coming soon to all distros that package Byobu.
+  </p>
+</section>
+
 <!-- How it works -->
 <section id="how-it-works">
   <h2>How it works</h2>
   <p class="section-sub">Three steps from install to your terminal on your phone.</p>
 
   <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 2rem;margin-bottom:2.5rem;overflow-x:auto;">
-    <pre style="font-family:var(--mono);font-size:0.82rem;line-height:1.7;color:var(--muted);margin:0;"><span style="color:var(--text);">  Your workstation                           Your phone</span>
-  ┌─────────────────────────┐               ┌────────────────┐
-  │     tmux sessions       │               │                │
-  │  ┌──────────────────┐   │   Tailscale   │   Trustmux     │
-  │  │  trustmux daemon │◄──┼───WireGuard───┼── PWA (or app) │
-  │  └──────────────────┘   │   (TLS)       │                │
-  │  ~/.config/trustmux/    │               │  browser or    │
-  │  tokens + pairing       │               │  home screen   │
-  └─────────────────────────┘               └────────────────┘
+    <pre style="font-family:var(--mono);font-size:0.82rem;line-height:1.7;color:var(--muted);margin:0;"><span style="color:var(--text);">  Your workstation                              Your phone</span>
+  ┌──────────────────────────┐                ┌────────────────┐
+  │   tmux / Byobu sessions  │                │                │
+  │         ↕ libtmux        │   Tailscale    │   Trustmux     │
+  │  ┌──────────────────┐    │   WireGuard    │   PWA (or app) │
+  │  │  trustmux daemon │◄───┼──── (TLS) ────►│                │
+  │  └──────────────────┘    │                │  browser or    │
+  │  ~/.config/trustmux/     │                │  home screen   │
+  │  tokens + pairing        │                │                │
+  └──────────────────────────┘                └────────────────┘
           <span style="color:var(--accent);">↑ your machine, your data, point to point — no cloud</span></pre>
   </div>
 
@@ -468,12 +553,12 @@
     <div class="step">
       <div class="step-num">Step 01</div>
       <h3>Install</h3>
-      <p>Install via <code>pip</code>, Ubuntu PPA, or Homebrew. Trustmux runs as a lightweight background daemon alongside your existing Byobu or tmux setup.</p>
+      <p>Install via Ubuntu PPA, <code>pip</code>, or Homebrew. Trustmux runs as a lightweight background daemon alongside your existing Byobu or tmux setup. Coming soon to all distros that package Byobu.</p>
     </div>
     <div class="step">
       <div class="step-num">Step 02</div>
       <h3>Enable &amp; start</h3>
-      <p>Run <code>trustmux-enable</code> to start at login, then <code>trustmux-ctl start</code>. The daemon binds to your Tailscale IP and serves over HTTPS via <code>tailscale serve</code>.</p>
+      <p>Run <code>trustmux-enable</code> to start at login, then <code>trustmux-ctl start</code>. The daemon uses <a href="https://github.com/tmux-python/libtmux">libtmux</a> to communicate with tmux, binds to your Tailscale IP, and serves over HTTPS via <code>tailscale serve</code>.</p>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
@@ -523,76 +608,6 @@
 </section>
 </div>
 
-<!-- Install -->
-<section id="install">
-  <h2>Install</h2>
-  <p class="section-sub">Pick your preferred package manager.</p>
-
-  <div class="install-tabs">
-    <button class="tab-btn active" onclick="showTab('apt')">apt / PPA</button>
-    <button class="tab-btn" onclick="showTab('pip')">pip</button>
-    <button class="tab-btn" onclick="showTab('brew')">Homebrew</button>
-  </div>
-
-  <div id="tab-apt" class="tab-panel active">
-    <div class="code-block">
-      <div class="comment"># Ubuntu 22.04 (Jammy) and later</div>
-      <div><span class="dollar">$</span> sudo add-apt-repository ppa:byobu/ppa</div>
-      <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install trustmux</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
-      <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
-    </div>
-  </div>
-
-  <div id="tab-pip" class="tab-panel">
-    <div class="code-block">
-      <div class="comment"># Requires Python 3.9+ and Tailscale</div>
-      <div><span class="dollar">$</span> pip install trustmux</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
-      <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
-    </div>
-  </div>
-
-  <div id="tab-brew" class="tab-panel">
-    <div class="code-block">
-      <div class="comment"># macOS (requires tmux and Tailscale)</div>
-      <div><span class="dollar">$</span> brew tap dustinkirkland/trustmux</div>
-      <div><span class="dollar">$</span> brew install dustinkirkland/trustmux/trustmux</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
-      <div>&nbsp;</div>
-      <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
-      <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
-    </div>
-  </div>
-
-  <p style="margin-top:1.5rem; color:var(--muted); font-size:0.875rem;">
-    Requires <a href="https://tailscale.com">Tailscale</a> for secure HTTPS transport and tmux &ge; 1.5.
-    Byobu is recommended but not required.
-  </p>
-</section>
-
 <!-- Pricing -->
 <section id="pricing">
   <h2>Pricing</h2>
@@ -641,6 +656,7 @@
     <a href="https://github.com/dustinkirkland/byobu">GitHub</a>
     <a href="https://pypi.org/project/trustmux/">PyPI</a>
     <a href="https://launchpad.net/~byobu/+archive/ubuntu/ppa">Ubuntu PPA</a>
+    <a href="https://github.com/tmux/tmux/wiki">tmux</a>
     <a href="https://tailscale.com">Tailscale</a>
     <a href="https://byobu.org">Byobu</a>
     <a href="https://github.com/dustinkirkland/byobu/issues">Contact</a>
@@ -648,7 +664,9 @@
   <div class="footer-copy">
     &copy; 2026 Dustin Kirkland. The Trustmux daemon and Progressive Web App are open source under the
     <a href="https://github.com/dustinkirkland/byobu/blob/master/COPYING">GPL-3.0 license</a>.
-    Built on <a href="https://byobu.org">Byobu</a> and <a href="https://tailscale.com">Tailscale</a>.
+    Built on <a href="https://github.com/tmux/tmux/wiki">tmux</a>,
+    <a href="https://byobu.org">Byobu</a>, and
+    <a href="https://tailscale.com">Tailscale</a>.
   </div>
 </footer>
 
