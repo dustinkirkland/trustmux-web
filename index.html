@@ -367,6 +367,65 @@
 
     .plan .btn { width: 100%; justify-content: center; }
 
+    /* ── FAQ ─────────────────────────────────────────────────────────── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    details.faq-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    details.faq-item[open] { border-color: var(--accent); }
+
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.1rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    details.faq-item summary::-webkit-details-marker { display: none; }
+
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 1.25rem;
+      color: var(--muted);
+      font-weight: 400;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    details.faq-item[open] summary::after { content: "–"; color: var(--accent); }
+
+    details.faq-item .faq-body {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    details.faq-item .faq-body p + p { margin-top: 0.75rem; }
+
+    details.faq-item .faq-body code {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      background: var(--bg3);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
     /* ── Footer ───────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -424,6 +483,7 @@
     <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="https://github.com/dustinkirkland/byobu" class="nav-cta">GitHub</a></li>
   </ul>
 </nav>
@@ -473,9 +533,9 @@
 
   <div id="tab-apt" class="tab-panel active">
     <div class="code-block">
-      <div class="comment"># Ubuntu 22.04 (Jammy) and later</div>
+      <div class="comment"># Ubuntu / Debian — trustmux is included in the byobu package</div>
       <div><span class="dollar">$</span> sudo add-apt-repository ppa:byobu/ppa</div>
-      <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install trustmux</div>
+      <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install byobu</div>
       <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
       <div><span class="dollar">$</span> trustmux-ctl start</div>
@@ -540,8 +600,8 @@
   <p style="margin-top:1.5rem; color:var(--muted); font-size:0.875rem;">
     Requires <a href="https://tailscale.com">Tailscale</a> for secure HTTPS transport and
     <a href="https://github.com/tmux/tmux/wiki">tmux</a> &ge; 1.5.
-    <a href="https://byobu.org">Byobu</a> is recommended but not required.
-    Coming soon to all distros that package Byobu.
+    On Ubuntu and Debian, trustmux ships inside the <a href="https://byobu.org">byobu</a> package — no separate trustmux package needed.
+    Use pip or Homebrew if you want trustmux without byobu.
   </p>
 </section>
 
@@ -661,6 +721,104 @@
       </ul>
       <a href="https://github.com/dustinkirkland/byobu" class="btn btn-secondary">⭐ Star on GitHub</a>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently asked questions</h2>
+  <p class="section-sub">Everything you need to know to get the most out of Trustmux.</p>
+  <div class="faq-list">
+
+    <details class="faq-item">
+      <summary>What exactly is Trustmux?</summary>
+      <div class="faq-body">
+        <p>Trustmux is a lightweight background daemon that runs on your workstation and exposes your tmux or Byobu sessions as a Progressive Web App (PWA) — accessible from any browser on your phone or tablet. It talks directly to tmux via <a href="https://github.com/tmux-python/libtmux">libtmux</a>, streams live output to your device, and lets you send keystrokes back. No SSH client needed, no VPN configuration beyond Tailscale.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do I need Byobu, or will plain tmux work?</summary>
+      <div class="faq-body">
+        <p>Plain tmux works great — Trustmux speaks to tmux directly. Byobu is completely optional. That said, if you already use Byobu, Trustmux has first-class support for Byobu sessions, profiles, and status lines, since it's built and maintained by the Byobu author.</p>
+        <p>On Ubuntu and Debian, Trustmux ships inside the <code>byobu</code> package, so installing Byobu is the easiest path. On macOS or other platforms, install via <code>pip</code> or Homebrew alongside whichever tmux setup you already have.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What is Tailscale and why is it required?</summary>
+      <div class="faq-body">
+        <p><a href="https://tailscale.com">Tailscale</a> creates a private WireGuard mesh between your devices — your workstation, your phone, your laptop — without opening any firewall ports. Trustmux binds to your Tailscale IP and uses <code>tailscale serve</code> to provide HTTPS, so your terminal is reachable from anywhere on your Tailnet and nowhere else.</p>
+        <p>Tailscale is free for personal use (up to 3 users, 100 devices). Install it on your workstation and your phone, sign in with the same account, and both devices appear on the same private network automatically — even across NAT, mobile data, and hotel Wi-Fi.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What tmux version do I need?</summary>
+      <div class="faq-body">
+        <p>tmux 1.5 or newer. In practice, most modern Linux distributions ship tmux 3.x — check with <code>tmux -V</code>. macOS users can install a current tmux via <code>brew install tmux</code>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I install the app on my phone?</summary>
+      <div class="faq-body">
+        <p>Run <code>trustmux-pair</code> on your workstation. It prints a short URL and a 6-digit code (valid for 60 seconds). Open the URL in your phone's browser and enter the code to pair.</p>
+        <p>Once paired, add it to your home screen for a full-screen, app-like experience: on <strong>iOS</strong>, tap the Share button then "Add to Home Screen." On <strong>Android</strong>, tap the browser menu then "Add to Home Screen" or "Install app." It will launch without browser chrome, just like a native app.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I navigate between sessions, windows, and panes?</summary>
+      <div class="faq-body">
+        <p>Swipe left or right on the terminal view to move between panes and windows. A picker in the top bar shows your current session, window, and pane — tap it to jump directly to any other one. If you use Byobu, named windows and sessions appear by their Byobu names.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I send keystrokes and commands from my phone?</summary>
+      <div class="faq-body">
+        <p>Tap the terminal view to focus it and bring up your phone keyboard. Type normally — every keystroke is forwarded to the active tmux pane in real time. An on-screen toolbar provides one-tap access to common keys that are awkward on mobile: Tab, Escape, arrow keys, and the tmux prefix (<code>Ctrl-b</code> by default, or <code>F12</code> in Byobu).</p>
+        <p>The Pro tier (coming soon) adds full control-character support: <code>Ctrl-C</code>, <code>Ctrl-Z</code>, <code>Ctrl-D</code>, and others.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I use Trustmux when I'm traveling or away from home?</summary>
+      <div class="faq-body">
+        <p>Yes — that's one of the main use cases. As long as both your workstation and your phone are connected to Tailscale, Trustmux works anywhere: on mobile data, on a conference Wi-Fi, anywhere in the world. Tailscale handles NAT traversal and roaming automatically, so there's nothing extra to configure.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is my terminal data private and secure?</summary>
+      <div class="faq-body">
+        <p>Yes. Your terminal output travels directly from your workstation to your phone over your Tailscale WireGuard tunnel — TLS encrypted, point to point. Nothing passes through a relay server or any Trustmux infrastructure. The pairing code expires in 60 seconds and is single-use. Long-lived tokens are stored locally in <code>~/.config/trustmux/</code> and never leave your machines.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How does pairing work, and how do I revoke access?</summary>
+      <div class="faq-body">
+        <p>Run <code>trustmux-pair</code> to generate a one-time 6-digit code valid for 60 seconds. When your phone enters the code, Trustmux issues a long-lived token stored on that device. To revoke all paired devices at once, run <code>trustmux-unpair</code> — this invalidates every token. You can then re-pair any device you want to keep.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Why not just SSH from my phone?</summary>
+      <div class="faq-body">
+        <p>SSH apps on phones work, but they're awkward: you need to manage keys, each connection starts a fresh shell, and if your connection drops you lose whatever was running. With Trustmux, you're looking at a <em>persistent</em> tmux session that keeps running on your workstation regardless of network interruptions. Pick it up from your phone exactly where you left off — running builds, long logs, ongoing processes — without any reconnection ceremony.</p>
+        <p>Trustmux also renders in a browser, so pinch-to-zoom, copy-paste, and accessibility features all work naturally on mobile.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>The daemon stopped. How do I restart it?</summary>
+      <div class="faq-body">
+        <p>Run <code>trustmux-ctl start</code>. Check its current status with <code>trustmux-ctl status</code>. If you ran <code>trustmux-enable</code>, the daemon is registered to start automatically at login — so a reboot will also bring it back. To stop it manually, run <code>trustmux-ctl stop</code>.</p>
+      </div>
+    </details>
+
   </div>
 </section>
 
