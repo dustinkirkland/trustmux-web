@@ -58,7 +58,13 @@
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
     }
+
+    .nav-logo:hover { text-decoration: none; }
 
     .nav-links {
       display: flex;
@@ -406,7 +412,7 @@
 <!-- Nav -->
 <nav>
   <div style="display:flex;align-items:center;gap:1.5rem;">
-    <a href="https://trustmux.dev" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;" class="nav-logo">
+    <a href="https://trustmux.dev" class="nav-logo" style="color:#00E5C3;">
       <img src="trustmux.svg" alt="" style="height:24px;width:24px;">trustmux
     </a>
     <a href="https://byobu.org" class="nav-logo" style="color:#39d353;">
