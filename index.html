@@ -436,6 +436,8 @@
   <div class="hero-terminal">
     <div><span class="prompt">$</span> <span class="cmd">pip install trustmux</span></div>
     <div class="out">Successfully installed trustmux-7.0a7</div>
+    <div><span class="prompt">$</span> <span class="cmd">trustmux-ctl start</span></div>
+    <div class="out">Trustmux started.</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux-enable</span></div>
     <div class="out">Trustmux enabled at login.</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux-pair</span></div>
@@ -537,6 +539,9 @@
       <div class="comment"># Requires Python 3.9+ and Tailscale</div>
       <div><span class="dollar">$</span> pip install trustmux</div>
       <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
       <div><span class="dollar">$</span> trustmux-enable</div>
       <div>&nbsp;</div>
@@ -551,6 +556,9 @@
       <div><span class="dollar">$</span> sudo add-apt-repository ppa:byobu/ppa</div>
       <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install trustmux</div>
       <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
       <div><span class="dollar">$</span> trustmux-enable</div>
       <div>&nbsp;</div>
@@ -564,6 +572,9 @@
       <div class="comment"># macOS (requires tmux and Tailscale)</div>
       <div><span class="dollar">$</span> brew tap dustinkirkland/trustmux</div>
       <div><span class="dollar">$</span> brew install dustinkirkland/trustmux/trustmux</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Start the daemon</div>
+      <div><span class="dollar">$</span> trustmux-ctl start</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
       <div><span class="dollar">$</span> trustmux-enable</div>
