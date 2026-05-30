@@ -643,6 +643,71 @@
   </div>
 </section>
 
+<!-- Problems Solved -->
+<section id="problems-solved">
+  <h2>Nine problems every mobile terminal user knows.</h2>
+  <p class="section-sub">We solved all nine — free, in the PWA, today.</p>
+
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid var(--border);color:var(--muted);font-weight:600;font-size:0.8rem;letter-spacing:.05em;text-transform:uppercase;">The pain</th>
+          <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid var(--border);color:var(--muted);font-weight:600;font-size:0.8rem;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;">Status</th>
+          <th style="text-align:left;padding:0.75rem 1rem;border-bottom:2px solid var(--border);color:var(--muted);font-weight:600;font-size:0.8rem;letter-spacing:.05em;text-transform:uppercase;">How Trustmux fixes it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">SSH session dies when network drops or phone backgrounds</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Your tmux session keeps running on your workstation. The phone is a viewer, not a connection endpoint — reconnect in a tap.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">SSH key management on phone is painful</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Replaced entirely by a 6-digit pairing code. No keys to copy, no secrets to sync, no password manager.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">NAT, firewalls, and dynamic IPs block access from anywhere</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Tailscale handles NAT traversal automatically — works on mobile data, hotel Wi-Fi, and conference networks with no port forwarding.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">App Store required, expensive subscriptions, abandoned apps</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Free PWA. No App Store. No subscription. One tap to add to home screen on iOS and Android — works full-screen like a native app.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">Copy-paste from a terminal on phone is broken</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Browser-native copy-paste. Touch-select text the same as any webpage — no terminal drag-selection fighting you.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">Font is too small; can't zoom without breaking layout</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Pinch-to-zoom works natively in the browser. No terminal re-flow or layout breakage.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">Scrollback requires tmux copy mode + phantom arrow keys</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Swipe up with your thumb. It's a browser — scrollback works like any webpage. tmux copy mode never needed.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.85rem 1rem;vertical-align:top;">Autocorrect and autocapitalize corrupt terminal commands</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">The keyboard toggle disables autocorrect, autocapitalize, and spellcheck when you're typing into the terminal.</td>
+        </tr>
+        <tr>
+          <td style="padding:0.85rem 1rem;vertical-align:top;">Swipe to navigate between sessions, windows, and panes</td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;white-space:nowrap;"><span style="background:#1a3a22;color:var(--accent);font-family:var(--mono);font-size:0.78rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:99px;letter-spacing:.03em;">✓ SOLVED</span></td>
+          <td style="padding:0.85rem 1rem;vertical-align:top;color:var(--muted);">Swipe left/right to move between panes and windows. Tap the S:/W:/P: picker in the header to jump directly to any session, window, or pane by name.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- Features -->
 <div id="features" style="background:var(--bg2); margin: 0; padding: 0;">
 <section>
