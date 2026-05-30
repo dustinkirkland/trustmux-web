@@ -456,7 +456,80 @@
 
     .footer-copy { color: var(--muted); font-size: 0.8rem; width: 100%; }
 
+    /* ── Phone Demo Slideshow ─────────────────────────────────────────── */
+    #phone-demo { background: var(--bg2); margin: 0; padding: 0; }
+    #phone-demo > section { padding: 4rem 2rem; }
+
+    .phone-slideshow-wrap {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-mockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .phone-frame {
+      width: 220px;
+      height: 476px;
+      border-radius: 32px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.65);
+      background: #141414;
+    }
+
+    .phone-slides {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      will-change: transform;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .phone-slides img {
+      width: 20%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .slide-dots { display: flex; gap: 8px; }
+
+    .slide-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.2s;
+    }
+    .slide-dot.active { background: var(--accent); }
+
+    .slide-captions { max-width: 340px; min-height: 180px; }
+    .slide-caption { display: none; }
+    .slide-caption.active { display: block; }
+    .slide-caption h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .slide-caption p { color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+    .slide-caption p + p { margin-top: 0.6rem; }
+    .slide-caption code {
+      font-family: var(--mono); font-size: 0.82rem;
+      background: var(--bg3); padding: 0.15rem 0.4rem;
+      border-radius: 4px; color: var(--accent);
+    }
+
     /* ── Responsive ───────────────────────────────────────────────────── */
+    @media (max-width: 720px) {
+      .phone-slideshow-wrap { flex-direction: column; gap: 2rem; }
+      .slide-captions { max-width: 100%; }
+    }
+
     @media (max-width: 600px) {
       nav { padding: 0 1rem; }
       .nav-links li:not(:last-child) { display: none; }
@@ -519,6 +592,63 @@
     <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
   </div>
 </section>
+
+<!-- Phone Demo Slideshow -->
+<div id="phone-demo">
+<section>
+  <h2>See it on your phone.</h2>
+  <p class="section-sub">Five screens that show what Trustmux looks like as a PWA on Android.</p>
+  <div class="phone-slideshow-wrap">
+
+    <div class="phone-mockup">
+      <div class="phone-frame">
+        <div class="phone-slides" id="phone-slides">
+          <img src="screenshots/01_main.png" alt="Main terminal UI">
+          <img src="screenshots/02_pairing.png" alt="Device pairing screen">
+          <img src="screenshots/03_create_overlay.png" alt="New pane / window / session">
+          <img src="screenshots/04_lock_screen.png" alt="Biometric lock screen">
+          <img src="screenshots/05_text_mode.png" alt="Text mode with Claude Code">
+        </div>
+      </div>
+      <div class="slide-dots" id="slide-dots">
+        <button class="slide-dot active" onclick="goSlide(0)" aria-label="Slide 1"></button>
+        <button class="slide-dot" onclick="goSlide(1)" aria-label="Slide 2"></button>
+        <button class="slide-dot" onclick="goSlide(2)" aria-label="Slide 3"></button>
+        <button class="slide-dot" onclick="goSlide(3)" aria-label="Slide 4"></button>
+        <button class="slide-dot" onclick="goSlide(4)" aria-label="Slide 5"></button>
+      </div>
+    </div>
+
+    <div class="slide-captions">
+      <div class="slide-caption active" id="cap-0">
+        <h3>Live terminal output</h3>
+        <p>Stream real-time output from any tmux or Byobu pane. Full ANSI color rendering. Swipe up to scroll back through history.</p>
+        <p>The byobu status line at the bottom mirrors your workstation — distro, uptime, CPU, memory, load, and clock.</p>
+      </div>
+      <div class="slide-caption" id="cap-1">
+        <h3>Pair in seconds</h3>
+        <p>No SSH keys, no certificates, no configuration. Run <code>trustmux-pair</code> on your workstation and enter the 6-digit code — that's it.</p>
+        <p>The code expires in 60 seconds and is single-use. Long-lived tokens are stored locally and never leave your devices.</p>
+      </div>
+      <div class="slide-caption" id="cap-2">
+        <h3>Manage sessions from your phone</h3>
+        <p>Tap <strong>+</strong> to create a new pane, window, or session. Use <strong>‹ ›</strong> in the header to step through all your live panes. Tap the pane name to rename it.</p>
+      </div>
+      <div class="slide-caption" id="cap-3">
+        <h3>Biometric lock</h3>
+        <p>Optionally require fingerprint, face, or PIN to unlock the app when you return to it — so your terminal is safe if someone picks up your phone.</p>
+        <p>Uses WebAuthn platform authenticator. No biometric data ever leaves your device.</p>
+      </div>
+      <div class="slide-caption" id="cap-4">
+        <h3>Terminal mode &amp; text mode</h3>
+        <p>Tap <strong>$_</strong> to toggle into text mode — autocorrect and spellcheck turn on so you can type naturally for longer messages or AI prompts.</p>
+        <p>Tap <strong>Aa</strong> to go back to terminal mode with autocorrect and autocapitalize fully disabled.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
 
 <!-- Install -->
 <section id="install">
@@ -931,6 +1061,34 @@
     document.getElementById('tab-' + name).classList.add('active');
     event.target.classList.add('active');
   }
+
+  // ── Phone slideshow ──────────────────────────────────────────────────────
+  (function () {
+    const strip  = document.getElementById('phone-slides');
+    const dots   = document.querySelectorAll('#slide-dots .slide-dot');
+    const caps   = document.querySelectorAll('.slide-caption');
+    const N      = dots.length;
+    let   cur    = 0;
+    let   timer  = null;
+
+    function goSlide(n) {
+      dots[cur].classList.remove('active');
+      caps[cur].classList.remove('active');
+      cur = ((n % N) + N) % N;
+      strip.style.transform = `translateX(-${cur * (100 / N)}%)`;
+      dots[cur].classList.add('active');
+      caps[cur].classList.add('active');
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goSlide(cur + 1), 3000);
+    }
+
+    window.goSlide = goSlide;   // expose for onclick attributes
+    resetTimer();
+  })();
 </script>
 
 </body>
