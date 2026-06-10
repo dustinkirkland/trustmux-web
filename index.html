@@ -583,7 +583,7 @@
     <a href="https://github.com/dustinkirkland/byobu" class="btn btn-secondary">View on GitHub</a>
   </div>
   <div class="hero-terminal">
-    <div><span class="prompt">$</span> <span class="cmd">trustmux-ctl start</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">trustmux start</span></div>
     <div class="out">Trustmux started.</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux-enable</span></div>
     <div class="out">Trustmux enabled at login.</div>
@@ -636,7 +636,7 @@
       </div>
       <div class="slide-caption" id="cap-3">
         <h3>Biometric lock</h3>
-        <p>Optionally require fingerprint, face, or PIN to unlock the app when you return to it — so your terminal is safe if someone picks up your phone.</p>
+        <p>Require fingerprint, face, or PIN to unlock when you return to the app — so your terminal is safe if someone picks up your phone. Once enabled, it stays on.</p>
         <p>Uses WebAuthn platform authenticator. No biometric data ever leaves your device.</p>
       </div>
       <div class="slide-caption" id="cap-4">
@@ -668,7 +668,7 @@
       <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install byobu</div>
       <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div><span class="dollar">$</span> trustmux start</div>
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
@@ -690,7 +690,7 @@
       <div class="out">Successfully installed trustmux-7.0a7</div>
       <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div><span class="dollar">$</span> trustmux start</div>
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
@@ -712,7 +712,7 @@
       <div><span class="dollar">$</span> brew install dustinkirkland/trustmux/trustmux</div>
       <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
-      <div><span class="dollar">$</span> trustmux-ctl start</div>
+      <div><span class="dollar">$</span> trustmux start</div>
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
@@ -763,7 +763,7 @@
     <div class="step">
       <div class="step-num">Step 02</div>
       <h3>Enable &amp; start</h3>
-      <p>Run <code>trustmux-enable</code> to start at login, then <code>trustmux-ctl start</code>. The daemon uses <a href="https://github.com/tmux-python/libtmux">libtmux</a> to communicate with tmux, binds to your Tailscale IP, and serves over HTTPS via <code>tailscale serve</code>.</p>
+      <p>Run <code>trustmux-enable</code> to start at login, then <code>trustmux start</code>. The daemon uses <a href="https://github.com/tmux-python/libtmux">libtmux</a> to communicate with tmux, binds to your Tailscale IP, and serves over HTTPS via <code>tailscale serve</code>.</p>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
@@ -894,7 +894,7 @@
         <li>Create &amp; name sessions, windows, and panes</li>
         <li>Navigate between all panes with ‹ › swipe</li>
         <li>Pairing-code authentication (6-digit, expires in 60s)</li>
-        <li>Biometric lock (Face ID / fingerprint / PIN via WebAuthn)</li>
+        <li>Biometric lock — always on once enabled (Face ID / fingerprint / PIN via WebAuthn)</li>
         <li>Byobu status line on the phone</li>
         <li>One-tap install to home screen (iOS &amp; Android)</li>
         <li class="dim">Send control characters (Ctrl-C, Ctrl-Z, …)</li>
@@ -905,16 +905,24 @@
       <a href="#install" class="btn btn-primary">Install free</a>
     </div>
     <div class="plan">
-      <h3>Pro</h3>
+      <h3>Pro — Native App</h3>
       <div class="plan-price">Coming<span><br>soon</span></div>
-      <p class="plan-desc">A native app for power users who need control characters, push notifications, and a single dashboard across all their machines.</p>
+      <p class="plan-desc">A native Flutter app for iOS and Android that does what no browser ever can: stay connected in the background, push you when jobs finish, and live on your Lock Screen.</p>
       <ul>
         <li>Everything in Free</li>
         <li>Send control characters (Ctrl-C, Ctrl-Z, Ctrl-D, …)</li>
         <li>Kill panes, windows, and sessions</li>
-        <li>Push notifications on output match / job complete</li>
-        <li>Native Flutter app (iOS &amp; Android)</li>
-        <li>Multi-machine dashboard</li>
+        <li>Multi-machine dashboard — all your servers in one place</li>
+        <li>Background connection — session stays live when app is backgrounded</li>
+        <li>Push notifications — job complete, output match, or terminal bell</li>
+        <li>Live Activities — build progress on your iPhone Lock Screen &amp; Dynamic Island</li>
+        <li>Home screen widget — session count and last command status at a glance</li>
+        <li>Biometric app lock — Face ID / Touch ID backed by Secure Enclave, with configurable idle timeout and session TTL</li>
+        <li>Full hardware keyboard — all Ctrl+key chords, no browser interception</li>
+        <li>Siri &amp; Shortcuts — "Connect to dev server" via voice or Action Button</li>
+        <li>Apple Watch / WearOS — wrist alert when your job finishes</li>
+        <li>iPad split view, Stage Manager &amp; external display support</li>
+        <li>iCloud / Google Drive sync for machine profiles</li>
       </ul>
       <a href="https://github.com/dustinkirkland/byobu" class="btn btn-secondary">⭐ Star on GitHub</a>
     </div>
@@ -1012,7 +1020,7 @@
     <details class="faq-item">
       <summary>The daemon stopped. How do I restart it?</summary>
       <div class="faq-body">
-        <p>Run <code>trustmux-ctl start</code>. Check its current status with <code>trustmux-ctl status</code>. If you ran <code>trustmux-enable</code>, the daemon is registered to start automatically at login — so a reboot will also bring it back. To stop it manually, run <code>trustmux-ctl stop</code>.</p>
+        <p>Run <code>trustmux start</code>. Check its current status with <code>trustmux status</code>. If you ran <code>trustmux-enable</code>, the daemon is registered to start automatically at login — so a reboot will also bring it back. To stop it manually, run <code>trustmux stop</code>.</p>
       </div>
     </details>
 
