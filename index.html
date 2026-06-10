@@ -585,9 +585,9 @@
   <div class="hero-terminal">
     <div><span class="prompt">$</span> <span class="cmd">trustmux start</span></div>
     <div class="out">Trustmux started.</div>
-    <div><span class="prompt">$</span> <span class="cmd">trustmux-enable</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">trustmux enable</span></div>
     <div class="out">Trustmux enabled at login.</div>
-    <div><span class="prompt">$</span> <span class="cmd">trustmux-pair</span></div>
+    <div><span class="prompt">$</span> <span class="cmd">trustmux pair</span></div>
     <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
     <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
   </div>
@@ -627,7 +627,7 @@
       </div>
       <div class="slide-caption" id="cap-1">
         <h3>Pair in seconds</h3>
-        <p>No SSH keys, no certificates, no configuration. Run <code>trustmux-pair</code> on your workstation and enter the 6-digit code — that's it.</p>
+        <p>No SSH keys, no certificates, no configuration. Run <code>trustmux pair</code> on your workstation and enter the 6-digit code — that's it.</p>
         <p>The code expires in 60 seconds and is single-use. Long-lived tokens are stored locally and never leave your devices.</p>
       </div>
       <div class="slide-caption" id="cap-2">
@@ -672,12 +672,12 @@
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div><span class="dollar">$</span> trustmux enable</div>
       <div class="out">Trustmux enabled at login.</div>
       <div>&nbsp;</div>
       <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
       <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div><span class="dollar">$</span> trustmux pair</div>
       <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
       <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
     </div>
@@ -694,12 +694,12 @@
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div><span class="dollar">$</span> trustmux enable</div>
       <div class="out">Trustmux enabled at login.</div>
       <div>&nbsp;</div>
       <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
       <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div><span class="dollar">$</span> trustmux pair</div>
       <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
       <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
     </div>
@@ -716,12 +716,12 @@
       <div class="out">Trustmux started.</div>
       <div>&nbsp;</div>
       <div class="comment"># Enable at login</div>
-      <div><span class="dollar">$</span> trustmux-enable</div>
+      <div><span class="dollar">$</span> trustmux enable</div>
       <div class="out">Trustmux enabled at login.</div>
       <div>&nbsp;</div>
       <div class="comment"># Ensure Tailscale is running on both this machine and your phone</div>
       <div class="comment"># Pair your phone</div>
-      <div><span class="dollar">$</span> trustmux-pair</div>
+      <div><span class="dollar">$</span> trustmux pair</div>
       <div class="out">Pairing code: <span style="color:var(--accent);font-weight:700">847-293</span> &nbsp; (expires in 60s)</div>
       <div class="out">Scan or visit: https://your-machine.tail1234.ts.net:7432</div>
     </div>
@@ -763,12 +763,12 @@
     <div class="step">
       <div class="step-num">Step 02</div>
       <h3>Enable &amp; start</h3>
-      <p>Run <code>trustmux-enable</code> to start at login, then <code>trustmux start</code>. The daemon uses <a href="https://github.com/tmux-python/libtmux">libtmux</a> to communicate with tmux, binds to your Tailscale IP, and serves over HTTPS via <code>tailscale serve</code>.</p>
+      <p>Run <code>trustmux enable</code> to start at login, then <code>trustmux start</code>. The daemon uses <a href="https://github.com/tmux-python/libtmux">libtmux</a> to communicate with tmux, binds to your Tailscale IP, and serves over HTTPS via <code>tailscale serve</code>.</p>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
       <h3>Pair your phone</h3>
-      <p>Run <code>trustmux-pair</code> to generate a 6-digit code. Open the URL on your phone, enter the code, and tap <em>Add to Home Screen</em> for a native app feel.</p>
+      <p>Run <code>trustmux pair</code> to generate a 6-digit code. Open the URL on your phone, enter the code, and tap <em>Add to Home Screen</em> for a native app feel.</p>
     </div>
   </div>
 </section>
@@ -968,7 +968,7 @@
     <details class="faq-item">
       <summary>How do I install the app on my phone?</summary>
       <div class="faq-body">
-        <p>Run <code>trustmux-pair</code> on your workstation. It prints a short URL and a 6-digit code (valid for 60 seconds). Open the URL in your phone's browser and enter the code to pair.</p>
+        <p>Run <code>trustmux pair</code> on your workstation. It prints a short URL and a 6-digit code (valid for 60 seconds). Open the URL in your phone's browser and enter the code to pair.</p>
         <p>Once paired, add it to your home screen for a full-screen, app-like experience: on <strong>iOS</strong>, tap the Share button then "Add to Home Screen." On <strong>Android</strong>, tap the browser menu then "Add to Home Screen" or "Install app." It will launch without browser chrome, just like a native app.</p>
       </div>
     </details>
@@ -1005,7 +1005,7 @@
     <details class="faq-item">
       <summary>How does pairing work, and how do I revoke access?</summary>
       <div class="faq-body">
-        <p>Run <code>trustmux-pair</code> to generate a one-time 6-digit code valid for 60 seconds. When your phone enters the code, Trustmux issues a long-lived token stored on that device. To revoke all paired devices at once, run <code>trustmux-unpair</code> — this invalidates every token. You can then re-pair any device you want to keep.</p>
+        <p>Run <code>trustmux pair</code> to generate a one-time 6-digit code valid for 60 seconds. When your phone enters the code, Trustmux issues a long-lived token stored on that device. To revoke all paired devices at once, run <code>trustmux unpair</code> — this invalidates every token. You can then re-pair any device you want to keep.</p>
       </div>
     </details>
 
@@ -1020,7 +1020,7 @@
     <details class="faq-item">
       <summary>The daemon stopped. How do I restart it?</summary>
       <div class="faq-body">
-        <p>Run <code>trustmux start</code>. Check its current status with <code>trustmux status</code>. If you ran <code>trustmux-enable</code>, the daemon is registered to start automatically at login — so a reboot will also bring it back. To stop it manually, run <code>trustmux stop</code>.</p>
+        <p>Run <code>trustmux start</code>. Check its current status with <code>trustmux status</code>. If you ran <code>trustmux enable</code>, the daemon is registered to start automatically at login — so a reboot will also bring it back. To stop it manually, run <code>trustmux stop</code>.</p>
       </div>
     </details>
 
