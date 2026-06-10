@@ -583,6 +583,8 @@
     <a href="https://github.com/dustinkirkland/byobu" class="btn btn-secondary">View on GitHub</a>
   </div>
   <div class="hero-terminal">
+    <div class="out"># First, launch tmux or byobu</div>
+    <div><span class="prompt">$</span> <span class="cmd">byobu</span></div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux start</span></div>
     <div class="out">Trustmux started.</div>
     <div><span class="prompt">$</span> <span class="cmd">trustmux enable</span></div>
@@ -667,6 +669,9 @@
       <div><span class="dollar">$</span> sudo add-apt-repository ppa:byobu/ppa</div>
       <div><span class="dollar">$</span> sudo apt update &amp;&amp; sudo apt install byobu</div>
       <div>&nbsp;</div>
+      <div class="comment"># Launch tmux or byobu first</div>
+      <div><span class="dollar">$</span> byobu</div>
+      <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
       <div><span class="dollar">$</span> trustmux start</div>
       <div class="out">Trustmux started.</div>
@@ -689,6 +694,9 @@
       <div><span class="dollar">$</span> pip install trustmux</div>
       <div class="out">Successfully installed trustmux-7.0a7</div>
       <div>&nbsp;</div>
+      <div class="comment"># Launch tmux or byobu first</div>
+      <div><span class="dollar">$</span> tmux</div>
+      <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
       <div><span class="dollar">$</span> trustmux start</div>
       <div class="out">Trustmux started.</div>
@@ -710,6 +718,9 @@
       <div class="comment"># macOS (requires tmux and Tailscale)</div>
       <div><span class="dollar">$</span> brew tap dustinkirkland/trustmux</div>
       <div><span class="dollar">$</span> brew install dustinkirkland/trustmux/trustmux</div>
+      <div>&nbsp;</div>
+      <div class="comment"># Launch tmux first</div>
+      <div><span class="dollar">$</span> tmux</div>
       <div>&nbsp;</div>
       <div class="comment"># Start the daemon</div>
       <div><span class="dollar">$</span> trustmux start</div>
