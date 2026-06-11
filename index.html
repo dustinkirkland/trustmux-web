@@ -557,6 +557,7 @@
     <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#security">Security</a></li>
     <li><a href="https://github.com/dustinkirkland/byobu" class="nav-cta">GitHub</a></li>
   </ul>
 </nav>
@@ -1051,6 +1052,44 @@
       </div>
     </details>
 
+  </div>
+</section>
+
+<!-- Security -->
+<section id="security">
+  <h2>Security model</h2>
+  <p class="section-sub">Point-to-point, hardened pairing, and 256-bit session tokens — no cloud required.</p>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">🔢</div>
+      <h3>Brute-force-resistant pairing</h3>
+      <p>The 6-digit pairing code expires after 3 minutes <em>and</em> is invalidated after three wrong guesses — regardless of how fast the guesses arrive. An attacker has a 0.0003% chance of success per pairing window. A new window requires the machine owner to run <code>trustmux pair</code> again.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🗝️</div>
+      <h3>256-bit session tokens</h3>
+      <p>After pairing, Trustmux issues a <code>secrets.token_urlsafe(32)</code> session token — 256 bits of cryptographically secure entropy. Validated with a constant-time comparison to prevent timing attacks. Computationally impossible to brute-force.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌐</div>
+      <h3>Minimal network exposure</h3>
+      <p>In default mode the daemon binds only to your Tailscale IP (100.x.x.x) — unreachable from the public internet or other local-network devices. The pairing endpoint is never exposed unless you explicitly run <code>trustmux start-direct</code>.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔐</div>
+      <h3>TLS everywhere</h3>
+      <p>Traffic between your workstation and phone is TLS-encrypted end to end via <code>tailscale serve</code>. In <code>start-direct</code> mode a self-signed certificate is generated automatically. In <code>start-local</code> mode the SSH tunnel provides encryption.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💾</div>
+      <h3>Tokens stored locally, 0600</h3>
+      <p>Session tokens live in <code>~/.config/trustmux/tokens.json</code> with mode 0600 — readable only by you. They are delivered to the browser as <code>HttpOnly</code>, <code>SameSite=Strict</code> cookies and automatically expire after 90 days of inactivity.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🚫</div>
+      <h3>Instant revocation</h3>
+      <p>Run <code>trustmux unpair</code> to immediately invalidate all paired devices or remove a specific one. Revoked tokens are rejected on the next request — no waiting, no TTL drift.</p>
+    </div>
   </div>
 </section>
 
